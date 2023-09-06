@@ -22,4 +22,4 @@ streamlit run app.py
 ```
 
 ## Streamlit Cloudにて公開
-https://movierecommender-ks5bdb5bjsvusrhyakaogb.streamlit.app/
+https://item2vec-movielens.streamlit.app/
