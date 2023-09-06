@@ -32,7 +32,7 @@ st.write("最低スコア {:.2f} までの結果を表示".format(selected_minsc
 # 似ている映画を表示
 st.markdown(f"### {selected_movie} に似ている映画")
 results = []
-for movie_id, score in model.wv.most_similar(selected_movie_id, topn=selected_num, positive=selected_movie_id): #上位topn件だけ表示
+for movie_id, score in model.wv.most_similar(positive=selected_movie_id, topn=selected_num): #上位topn件だけ表示
     if score < selected_minscore:
         break
     title = movie_id_to_title[movie_id]
@@ -52,7 +52,7 @@ if len(selected_movies) > 0:
     user_vector = np.mean(vectors, axis=0) #平均ベクトルをユーザーのベクトルとする
     st.markdown(f"### おすすめの映画")
     recommend_results = []
-    for movie_id, score in model.wv.most_similar(user_vector):
+    for movie_id, score in model.wv.most_similar(positive=user_vector):
         title = movie_id_to_title[movie_id]
         recommend_results.append({"title": title, "score": score})
     recommend_results = pd.DataFrame(recommend_results)
