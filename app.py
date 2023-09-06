@@ -33,12 +33,11 @@ st.write("基準スコア {:.2f}".format(selected_minscore))
 st.markdown(f"### {selected_movie} に似ている映画")
 results = []
 for movie_id, score in model.wv.most_similar(positive=selected_movie_id, topn=selected_num): #上位topn件だけ表示
+    if score < selected_minscore:
+        continue
     title = movie_id_to_title[movie_id]
     genre = movie_id_to_genre[movie_id]
-    if score < selected_minscore:
-        results.append({"タイトル": title, "スコア": f'<span style="color:blue">{score}</span>', "ジャンル": eval(genre)})
-    else:
-        results.append({"タイトル": title, "スコア": score, "ジャンル": eval(genre)})
+    results.append({"タイトル": title, "スコア": score, "ジャンル": eval(genre)})
 results = pd.DataFrame(results)
 st.write(results)
 
