@@ -2,7 +2,7 @@
 * item2vecを用いた映画レコメンドアプリケーション
 * データはMovieLensの映画データ（10M）（https://grouplens.org/datasets/movielens/10m/）
 * 推薦アルゴリズムはitem2vecを使用
-* https://github.com/oreilly-japan/RecommenderSystems/blob/main/chapter5/colab/Item2vec.ipynb で学習したモデルを利用
+* `item2vec_MovieLens.ipynb`で学習したモデルを利用
 * モデルは`data/item2vec.model`に格納
 * Streamlit Cloudにて公開
 
