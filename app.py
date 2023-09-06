@@ -53,6 +53,8 @@ if len(selected_movies) > 0:
     st.markdown(f"### おすすめの映画")
     recommend_results = []
     for movie_id, score in model.wv.most_similar(positive=user_vector):
+        if movie_id in selected_movie_ids:
+            continue
         title = movie_id_to_title[movie_id]
         recommend_results.append({"title": title, "score": score})
     recommend_results = pd.DataFrame(recommend_results)
